@@ -91,3 +91,98 @@ export interface RegisterData {
   password: string;
   phone?: string;
 }
+
+export interface MaintenanceReminder {
+  _id: string;
+  userId: string;
+  carId: Car | string;
+  title: string;
+  description?: string;
+  reminderType: 'mileage' | 'time' | 'both';
+  currentMileage?: number;
+  targetMileage?: number;
+  lastServiceDate?: string;
+  nextServiceDate?: string;
+  intervalMonths?: number;
+  isRecurring: boolean;
+  isActive: boolean;
+  notified: boolean;
+  priority: 'low' | 'medium' | 'high';
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface FuelEntry {
+  _id: string;
+  userId: string;
+  carId: Car | string;
+  date: string;
+  odometer: number;
+  quantity: number;
+  pricePerUnit: number;
+  totalCost: number;
+  fuelType: string;
+  station?: string;
+  isFillUp: boolean;
+  notes?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface FuelStatistics {
+  averageFuelEconomy: number;
+  totalSpent: number;
+  totalFuel: number;
+  averagePricePerUnit: number;
+  entriesCount: number;
+}
+
+export interface Expense {
+  _id: string;
+  userId: string;
+  carId: Car | string;
+  date: string;
+  category: string;
+  description: string;
+  amount: number;
+  odometer?: number;
+  vendor?: string;
+  paymentMethod?: string;
+  isRecurring: boolean;
+  receiptUrl?: string;
+  notes?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ExpenseStatistics {
+  totalAmount: number;
+  expenseCount: number;
+  categoryBreakdown: Array<{
+    category: string;
+    amount: number;
+    percentage: number;
+  }>;
+  averageExpense: number;
+}
+
+export interface Document {
+  _id: string;
+  userId: string;
+  carId: Car | string;
+  title: string;
+  documentType: string;
+  description?: string;
+  documentNumber?: string;
+  issueDate?: string;
+  expiryDate?: string;
+  fileUrl?: string;
+  fileName?: string;
+  fileSize?: number;
+  reminderEnabled: boolean;
+  reminderDays?: number;
+  tags?: string[];
+  notes?: string;
+  createdAt: string;
+  updatedAt: string;
+}

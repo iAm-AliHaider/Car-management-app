@@ -10,6 +10,10 @@ import carRoutes from './routes/carRoutes';
 import serviceRoutes from './routes/serviceRoutes';
 import sparePartRoutes from './routes/sparePartRoutes';
 import partOrderRoutes from './routes/partOrderRoutes';
+import maintenanceReminderRoutes from './routes/maintenanceReminderRoutes';
+import fuelEntryRoutes from './routes/fuelEntryRoutes';
+import expenseRoutes from './routes/expenseRoutes';
+import documentRoutes from './routes/documentRoutes';
 
 // Load environment variables
 dotenv.config();
@@ -31,6 +35,10 @@ app.use('/api/cars', carRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/parts', sparePartRoutes);
 app.use('/api/orders', partOrderRoutes);
+app.use('/api/reminders', maintenanceReminderRoutes);
+app.use('/api/fuel', fuelEntryRoutes);
+app.use('/api/expenses', expenseRoutes);
+app.use('/api/documents', documentRoutes);
 
 // Health check
 app.get('/health', (req, res) => {

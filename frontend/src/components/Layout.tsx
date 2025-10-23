@@ -19,9 +19,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const navLinks = [
     { to: '/dashboard', label: 'Dashboard' },
     { to: '/cars', label: 'My Cars' },
-    { to: '/services', label: 'Service Bookings' },
-    { to: '/parts', label: 'Spare Parts' },
-    { to: '/orders', label: 'My Orders' },
+    { to: '/services', label: 'Services' },
+    { to: '/fuel', label: 'Fuel' },
+    { to: '/expenses', label: 'Expenses' },
+    { to: '/maintenance', label: 'Maintenance' },
+    { to: '/parts', label: 'Parts' },
+    { to: '/orders', label: 'Orders' },
   ];
 
   const isActive = (path: string) => location.pathname === path;

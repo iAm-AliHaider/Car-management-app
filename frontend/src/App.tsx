@@ -11,6 +11,9 @@ import Cars from './pages/Cars';
 import Services from './pages/Services';
 import Parts from './pages/Parts';
 import Orders from './pages/Orders';
+import FuelTracking from './pages/FuelTracking';
+import Expenses from './pages/Expenses';
+import Maintenance from './pages/Maintenance';
 
 const App: React.FC = () => {
   return (
@@ -56,6 +59,30 @@ const App: React.FC = () => {
             element={
               <PrivateRoute>
                 <Orders />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/fuel"
+            element={
+              <PrivateRoute>
+                <FuelTracking />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/expenses"
+            element={
+              <PrivateRoute>
+                <Expenses />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/maintenance"
+            element={
+              <PrivateRoute>
+                <Maintenance />
               </PrivateRoute>
             }
           />
