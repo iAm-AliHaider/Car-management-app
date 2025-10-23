@@ -14,6 +14,8 @@ import Orders from './pages/Orders';
 import FuelTracking from './pages/FuelTracking';
 import Expenses from './pages/Expenses';
 import Maintenance from './pages/Maintenance';
+import RentalMarketplace from './pages/RentalMarketplace';
+import RentalBookings from './pages/RentalBookings';
 
 const App: React.FC = () => {
   return (
@@ -83,6 +85,22 @@ const App: React.FC = () => {
             element={
               <PrivateRoute>
                 <Maintenance />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/rental-marketplace"
+            element={
+              <PrivateRoute>
+                <RentalMarketplace />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/rental-bookings"
+            element={
+              <PrivateRoute>
+                <RentalBookings />
               </PrivateRoute>
             }
           />

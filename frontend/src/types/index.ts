@@ -186,3 +186,68 @@ export interface Document {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface CarRental {
+  _id: string;
+  carId: Car | string;
+  ownerId: User | string;
+  renterId?: User | string;
+  isAvailable: boolean;
+  rentalType: 'hourly' | 'daily' | 'weekly' | 'monthly';
+  pricePerHour?: number;
+  pricePerDay?: number;
+  pricePerWeek?: number;
+  pricePerMonth?: number;
+  location: string;
+  availableFrom?: string;
+  availableUntil?: string;
+  minimumRentalPeriod?: number;
+  maximumRentalPeriod?: number;
+  termsAndConditions?: string;
+  features?: string[];
+  insurance: boolean;
+  securityDeposit?: number;
+  mileageLimit?: number;
+  currentStatus: 'available' | 'rented' | 'maintenance' | 'unavailable';
+  totalRentals: number;
+  rating?: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface RentalBooking {
+  _id: string;
+  carRentalId: string;
+  carId: Car | string;
+  ownerId: User | string;
+  renterId: User | string;
+  startDate: string;
+  endDate: string;
+  status: 'pending' | 'approved' | 'active' | 'completed' | 'cancelled' | 'rejected';
+  rentalDuration: number;
+  rentalRate: number;
+  totalCost: number;
+  securityDeposit?: number;
+  pickupLocation: string;
+  dropoffLocation?: string;
+  startMileage?: number;
+  endMileage?: number;
+  accessLevel: 'view-only' | 'full-access';
+  paymentStatus: 'pending' | 'paid' | 'refunded';
+  paymentMethod?: string;
+  cancelledBy?: string;
+  cancellationReason?: string;
+  reviewByRenter?: {
+    rating: number;
+    comment?: string;
+    date: string;
+  };
+  reviewByOwner?: {
+    rating: number;
+    comment?: string;
+    date: string;
+  };
+  notes?: string;
+  createdAt: string;
+  updatedAt: string;
+}
