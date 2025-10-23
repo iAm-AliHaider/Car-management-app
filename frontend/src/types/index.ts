@@ -251,3 +251,87 @@ export interface RentalBooking {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface Fleet {
+  _id: string;
+  name: string;
+  description?: string;
+  ownerId: User | string;
+  vehicles: (Car | string)[];
+  members: (FleetMember | string)[];
+  fleetType: 'personal' | 'business' | 'rental' | 'delivery' | 'taxi' | 'other';
+  totalVehicles: number;
+  activeVehicles: number;
+  tags?: string[];
+  settings: {
+    allowMemberAddVehicles: boolean;
+    requireApprovalForServices: boolean;
+    sharedExpenses: boolean;
+    notifications: boolean;
+  };
+  statistics: {
+    totalMileage: number;
+    totalExpenses: number;
+    totalServices: number;
+    averageMileagePerVehicle: number;
+  };
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface FleetMember {
+  _id: string;
+  fleetId: Fleet | string;
+  userId: User | string;
+  role: 'owner' | 'manager' | 'driver' | 'viewer';
+  permissions: {
+    canManageVehicles: boolean;
+    canScheduleServices: boolean;
+    canViewExpenses: boolean;
+    canManageMembers: boolean;
+    canEditFleet: boolean;
+  };
+  assignedVehicles?: (Car | string)[];
+  status: 'active' | 'inactive' | 'pending';
+  joinedAt: string;
+  invitedBy?: User | string;
+  notes?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface FleetAnalytics {
+  overview: {
+    totalVehicles: number;
+    activeVehicles: number;
+    totalMembers: number;
+    activeMembers: number;
+  };
+  vehicleStats: {
+    totalMileage: number;
+    averageMileage: number;
+    totalValue: number;
+    averageAge: number;
+  };
+  expenseStats: {
+    totalExpenses: number;
+    averageExpensePerVehicle: number;
+    expensesByCategory: Array<{
+      category: string;
+      amount: number;
+      percentage: number;
+    }>;
+  };
+  serviceStats: {
+    totalServices: number;
+    completedServices: number;
+    pendingServices: number;
+    upcomingServices: number;
+  };
+  performanceMetrics: {
+    averageFuelEconomy: number;
+    totalFuelCost: number;
+    costPerMile: number;
+    utilizationRate: number;
+  };
+}

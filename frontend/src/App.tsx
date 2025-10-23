@@ -16,6 +16,8 @@ import Expenses from './pages/Expenses';
 import Maintenance from './pages/Maintenance';
 import RentalMarketplace from './pages/RentalMarketplace';
 import RentalBookings from './pages/RentalBookings';
+import Fleets from './pages/Fleets';
+import FleetServices from './pages/FleetServices';
 
 const App: React.FC = () => {
   return (
@@ -101,6 +103,22 @@ const App: React.FC = () => {
             element={
               <PrivateRoute>
                 <RentalBookings />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/fleets"
+            element={
+              <PrivateRoute>
+                <Fleets />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/fleet-services"
+            element={
+              <PrivateRoute>
+                <FleetServices />
               </PrivateRoute>
             }
           />
