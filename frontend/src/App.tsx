@@ -18,6 +18,8 @@ import RentalMarketplace from './pages/RentalMarketplace';
 import RentalBookings from './pages/RentalBookings';
 import Fleets from './pages/Fleets';
 import FleetServices from './pages/FleetServices';
+import AccidentReports from './pages/AccidentReports';
+import InsuranceClaims from './pages/InsuranceClaims';
 
 const App: React.FC = () => {
   return (
@@ -119,6 +121,22 @@ const App: React.FC = () => {
             element={
               <PrivateRoute>
                 <FleetServices />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/accident-reports"
+            element={
+              <PrivateRoute>
+                <AccidentReports />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/insurance-claims"
+            element={
+              <PrivateRoute>
+                <InsuranceClaims />
               </PrivateRoute>
             }
           />

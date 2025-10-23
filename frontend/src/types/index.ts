@@ -335,3 +335,204 @@ export interface FleetAnalytics {
     utilizationRate: number;
   };
 }
+
+export interface AccidentReport {
+  _id: string;
+  userId: string;
+  carId: Car | string;
+  accidentDate: string;
+  accidentTime?: string;
+  location: string;
+  coordinates?: {
+    latitude: number;
+    longitude: number;
+  };
+  severity: 'minor' | 'moderate' | 'severe' | 'total-loss';
+  description: string;
+  weatherConditions?: string;
+  roadConditions?: string;
+  otherPartiesInvolved: Array<{
+    name: string;
+    contactNumber?: string;
+    email?: string;
+    vehicleInfo?: string;
+    licensePlate?: string;
+    insuranceCompany?: string;
+    insurancePolicyNumber?: string;
+  }>;
+  policeReportFiled: boolean;
+  policeReportNumber?: string;
+  policeDepartment?: string;
+  officerName?: string;
+  officerBadgeNumber?: string;
+  witnesses: Array<{
+    name: string;
+    contactNumber?: string;
+    email?: string;
+    statement?: string;
+  }>;
+  vehicleDamage: {
+    description: string;
+    estimatedCost?: number;
+    damagedParts: string[];
+    vehicleDrivable: boolean;
+  };
+  injuries: Array<{
+    personName: string;
+    injuryDescription: string;
+    medicalAttentionRequired: boolean;
+    hospitalName?: string;
+  }>;
+  photos: Array<{
+    url: string;
+    description?: string;
+    uploadedAt: string;
+  }>;
+  documents: Array<{
+    title: string;
+    url: string;
+    fileType: string;
+    uploadedAt: string;
+  }>;
+  insuranceNotified: boolean;
+  insuranceNotificationDate?: string;
+  insuranceClaimId?: string;
+  status: 'draft' | 'submitted' | 'under-review' | 'closed';
+  notes?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface InsuranceClaim {
+  _id: string;
+  userId: string;
+  carId: Car | string;
+  accidentReportId?: AccidentReport | string;
+  claimNumber?: string;
+  claimType: 'collision' | 'comprehensive' | 'liability' | 'uninsured-motorist' | 'personal-injury' | 'other';
+  incidentDate: string;
+  claimAmount?: number;
+  approvedAmount?: number;
+  deductible?: number;
+  insuranceCompany: string;
+  policyNumber: string;
+  policyHolderName: string;
+  agentName?: string;
+  agentContactNumber?: string;
+  agentEmail?: string;
+  description: string;
+  damageDescription: string;
+  claimReason: string;
+  status: 'draft' | 'submitted' | 'under-review' | 'additional-info-required' | 'approved' | 'partially-approved' | 'denied' | 'closed' | 'withdrawn';
+  submittedDate?: string;
+  reviewStartDate?: string;
+  decisionDate?: string;
+  communications: Array<{
+    date: string;
+    type: 'email' | 'phone' | 'in-person' | 'letter' | 'portal';
+    direction: 'incoming' | 'outgoing';
+    subject?: string;
+    summary: string;
+    representative?: string;
+  }>;
+  documents: Array<{
+    title: string;
+    documentType: 'police-report' | 'estimate' | 'invoice' | 'photo' | 'medical-record' | 'correspondence' | 'other';
+    url: string;
+    fileSize?: number;
+    uploadedAt: string;
+    description?: string;
+  }>;
+  repairShop?: {
+    name: string;
+    address?: string;
+    contactNumber?: string;
+    estimateAmount?: number;
+    actualAmount?: number;
+  };
+  rentalCarInfo?: {
+    provided: boolean;
+    company?: string;
+    dailyRate?: number;
+    daysAuthorized?: number;
+    totalCost?: number;
+  };
+  paymentStatus: 'pending' | 'partial' | 'completed' | 'not-applicable';
+  payments: Array<{
+    date: string;
+    amount: number;
+    method: string;
+    checkNumber?: string;
+    notes?: string;
+  }>;
+  totalPaid?: number;
+  atFault?: boolean;
+  faultPercentage?: number;
+  denialReason?: string;
+  appealFiled?: boolean;
+  appealDate?: string;
+  appealOutcome?: string;
+  notes?: string;
+  internalNotes?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface AccidentStatistics {
+  totalReports: number;
+  bySeverity: {
+    minor: number;
+    moderate: number;
+    severe: number;
+    totalLoss: number;
+  };
+  byStatus: {
+    draft: number;
+    submitted: number;
+    underReview: number;
+    closed: number;
+  };
+  withPoliceReport: number;
+  withInsuranceClaim: number;
+  totalEstimatedDamage: number;
+  withInjuries: number;
+}
+
+export interface ClaimStatistics {
+  totalClaims: number;
+  byType: {
+    collision: number;
+    comprehensive: number;
+    liability: number;
+    uninsuredMotorist: number;
+    personalInjury: number;
+    other: number;
+  };
+  byStatus: {
+    draft: number;
+    submitted: number;
+    underReview: number;
+    approved: number;
+    partiallyApproved: number;
+    denied: number;
+    closed: number;
+    withdrawn: number;
+  };
+  byPaymentStatus: {
+    pending: number;
+    partial: number;
+    completed: number;
+    notApplicable: number;
+  };
+  financials: {
+    totalClaimAmount: number;
+    totalApprovedAmount: number;
+    totalPaid: number;
+    totalDeductibles: number;
+    averageClaimAmount: number;
+  };
+  appeals: {
+    totalAppeals: number;
+    pendingAppeals: number;
+  };
+}

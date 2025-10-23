@@ -18,6 +18,8 @@ import carRentalRoutes from './routes/carRentalRoutes';
 import rentalBookingRoutes from './routes/rentalBookingRoutes';
 import fleetRoutes from './routes/fleetRoutes';
 import fleetMemberRoutes from './routes/fleetMemberRoutes';
+import accidentReportRoutes from './routes/accidentReportRoutes';
+import insuranceClaimRoutes from './routes/insuranceClaimRoutes';
 
 // Load environment variables
 dotenv.config();
@@ -47,6 +49,8 @@ app.use('/api/rentals', carRentalRoutes);
 app.use('/api/rental-bookings', rentalBookingRoutes);
 app.use('/api/fleets', fleetRoutes);
 app.use('/api/fleets', fleetMemberRoutes);
+app.use('/api/accident-reports', accidentReportRoutes);
+app.use('/api/insurance-claims', insuranceClaimRoutes);
 
 // Health check
 app.get('/health', (req, res) => {

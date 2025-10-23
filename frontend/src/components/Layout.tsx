@@ -29,6 +29,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { to: '/rental-bookings', label: 'My Rentals' },
     { to: '/fleets', label: 'Fleets' },
     { to: '/fleet-services', label: 'Fleet Services' },
+    { to: '/accident-reports', label: 'Accidents' },
+    { to: '/insurance-claims', label: 'Insurance' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
