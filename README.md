@@ -4,12 +4,37 @@ A comprehensive car management application with service booking and spare parts 
 
 ## Features
 
+### Core Features
 - **User Authentication**: Secure login and registration system
 - **Car Management**: Add, edit, and manage your vehicles
 - **Service Booking**: Book maintenance and repair services
 - **Spare Parts Ordering**: Order spare parts for your vehicles
-- **Maintenance History**: Track all service records
-- **Service Providers**: Manage service centers and providers
+- **Fuel Tracking**: Track fuel consumption and calculate MPG
+- **Expense Management**: Track and categorize vehicle expenses
+- **Maintenance Reminders**: Time and mileage-based reminders
+- **Document Management**: Store vehicle documents with expiry alerts
+
+### Advanced Features
+- **Car Rental & Sharing**: Rent your car or give temporary ownership to other users
+- **Fleet Management**: Manage multiple vehicles as a fleet with role-based access
+- **Fleet Services**: Bulk service scheduling for fleet vehicles
+- **Accident Reporting**: Comprehensive accident documentation with insurance tracking
+- **Insurance Claims**: Full claim lifecycle management with payment tracking
+
+## Quick Start with Docker
+
+The easiest way to run the application is using Docker:
+
+```bash
+# Start all services (MongoDB, Backend, Frontend)
+docker-compose up -d
+
+# Access the application
+# Frontend: http://localhost:5173
+# Backend API: http://localhost:5000
+```
+
+For detailed Docker instructions, see [DOCKER.md](DOCKER.md).
 
 ## Tech Stack
 
