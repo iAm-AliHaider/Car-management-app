@@ -1,0 +1,22 @@
+{
+  "name": "car-management-app",
+  "version": "1.0.0",
+  "description": "Car management application with service booking and spare parts ordering",
+  "main": "index.js",
+  "scripts": {
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build"
+  },
+  "keywords": [
+    "car",
+    "management",
+    "booking",
+    "maintenance",
+    "spare-parts"
+  ],
+  "author": "",
+  "license": "MIT"
+}
